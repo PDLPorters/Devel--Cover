@@ -392,7 +392,7 @@ sub populate_run {
   $Run{perl} = $] < 5.010 ? join ".", map ord, split //, $^V : sprintf "%vd",
     $^V;
   $Run{dir}     = $Dir;
-  $Run{run}     = $0;
+  $Run{run}     = File::Spec->rel2abs($0);
   $Run{name}    = $Dir;
   $Run{version} = "unknown";
 

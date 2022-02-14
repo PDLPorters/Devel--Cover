@@ -59,6 +59,8 @@ sub canonical_file {
   my $self = shift;
   my ($file) = @_;
 
+  use File::Spec;
+  $file = File::Spec->rel2abs($file);
   my $cfile  = $file;
   my $digest = Devel::Cover::DB::Structure->digest($file);
   if ($digest) {
